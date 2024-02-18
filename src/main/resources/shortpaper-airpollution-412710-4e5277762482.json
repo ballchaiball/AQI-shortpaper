@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "shortpaper-airpollution-412710",
+  "private_key_id": "4e5277762482a6993814ccd694f8c8378e443907",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDKY4XVj2mQcmSk\n1JrBCw846FEeDJWEnuxzGvNLtfRYMA22nPeXYu4hNQbASnXx/D8FknekYn9SvzCn\nBPetrgCkzIJcRNh0X5UL6jaFeAZHTCGQT6xWPopagK3UFtBz6bDSi8AlWBUcbEQu\nJNb93BWAmlqmM7lirZ+Go2SwfB16lAvYLx/EAsjhOYMA25akGNC5movb+VHA+Mah\nOm+UU7+lhwkkgnBXpRPz37nfOfQMGlqWq8fW6JYX1s93p9is0Gwyf1Jj9hjb2ATC\nhz2veTTFfn/Q9ClTETqDRpdqeCffuKjxX6rTIEHuiCN7NZ+vd2bCfYmEpnqVog8q\nV6rYnDHbAgMBAAECggEATSIK8q5ajCucwdkpNaNSZNzddXdUUJwE/4Vo7hTlj+qY\nf11pWy/gE5XTAdwfAV+iYSxGHsdPQSkOkMjq4C1tn2E12ZZ/bDK1ajoUF1/7/JY+\nQHKs+p2ROxbJqQgc3+BTfJq4W0MroI5+mZt+uHd1VnL9U1RpNft3zeddy4kx7vHo\n9nT3IobogpHRgVr8dxpipj5gI+JkufV5N/FaF1DUEixpayrAEa6O+xkLpDtA8pFl\nONPp85u2iTD0sICMj22BkO5iTVPrh9e73KuYeFgjcftfAKMvY5XYlDX+NZY6h7Yr\nRnhhwGpPFofb10XWSexU0hAHh6Ij+B29wVQt6LCGCQKBgQD8e4uitZ4cllN/PUu1\nZUm93cSO6s7h5FP/YcBxcWYKV9a/2QJ8Y/D7aUgxainSHVNZdj4vv6Pv+hmIS2Sr\nHTdHZjxjYWhK8U87+OgprJH+t1s1OVsmLO9nGj6C3aSZ+e25WZEGaQxoemiLZ1aT\nW9njd3OtqnpUZ4wTBu2GE71UpwKBgQDNNVKSzOthggGdmydbp0MpRy2LhOqD5/o8\negaS1Ay9UYmWsVN/rZIKXBRqLXjJor5bJSbVlQWXyde+Rt4Ts6zvedNoPkEru0q/\nX9zz2WhA7bslpzSmTT3V+Nh/hHf21PdbaRLEluMuExUVpvwRm4d4DkLMbig3qbUM\nELMoewy7rQKBgHswLGkvA/4euo6ScaYHzXr+ATFaD6bXqMQqBaNUGN1jDjx8vWHD\nwYhpTfgOPGlwNYKo1p6lem9UL7D4WB3FG3uSvlQe6qvmISq5v0zWDkWhYLcPTRHL\nSuObQnTHf9BAyWRt9vyRtKQlVWzu9qbfYehCGAbb7uPPweBmuO16JB5xAoGAdQJX\noB86g/H2a+DBU3CPSiUs4iYa9rW6qOtHfkdtMDIjCwr3upDE+iVA+r4M5qRmeGA5\nwYVkmAVegD+2d3N3Q2Gq2wDMdlwoJfFKcrzfxk4H7VNnIQBgJvbqs+Nb6CHNHZFP\nQ0tqJKZ62krJ5lxRpXI0Qo75Xavl8QhAr+9h9k0CgYEAr3Wh+Lk70lsw0VfCWe8P\nlUonuJ8Inzbvpsb6ynAU3qQ2TCHqtJPtzCo3EvVey/dU/+vI1iHhaJXdjGqsaERt\nlqFgQszsewdcZwFqHj8XW77hmdmrNWDr9wD57xP6UTtsOPaejB/hS5QfDkY4tSFq\n8bteErq7Cf2cmSOiDjCxgew=\n-----END PRIVATE KEY-----\n",
+  "client_email": "shortpaper-airpollution-412710@appspot.gserviceaccount.com",
+  "client_id": "114760389577031760264",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/shortpaper-airpollution-412710%40appspot.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
