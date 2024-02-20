@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class OpenWeatherMapClient {
 
-    private final RestTemplate restTemplate;
+    private final RestTemplate restTemplate ;
     private final String apiKey = "80520e0fd71ea432c3f6a02511834695"; // Ideally from properties
 
     public OpenWeatherMapClient(RestTemplate restTemplate) {
