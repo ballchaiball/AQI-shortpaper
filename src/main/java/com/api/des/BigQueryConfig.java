@@ -6,16 +6,15 @@ import com.google.cloud.bigquery.BigQueryOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Configuration
 public class BigQueryConfig {
     @Bean
     public BigQuery bigQuery() throws IOException {
-        GoogleCredentials credentials = GoogleCredentials
-                .fromStream(new FileInputStream("D:\\ป โท\\Project immortal\\backend\\des\\src\\main\\resources\\shortpaper-airpollution-412710-4e5277762482.json"));
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("shortpaper-airpollution-412710-4e5277762482.json");
+        GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
         return BigQueryOptions.newBuilder().setCredentials(credentials).build().getService();
     }
 }
