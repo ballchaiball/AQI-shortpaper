@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/pollution")
@@ -20,7 +17,7 @@ public class PollutionDataController {
     @Autowired
     private PollutionDataService pollutionDataService;
 
-    private static final Logger logger = LoggerFactory.getLogger(PollutionDataController.class);
+    public static final Logger logger = LoggerFactory.getLogger(PollutionDataController.class);
 
 
     @GetMapping("/current")
@@ -63,5 +60,20 @@ public class PollutionDataController {
             return ResponseEntity.internalServerError().body("Failed to fetch forecast AQI data for all cities: " + e.getMessage());
         }
     }
+
+
+    @GetMapping("/forecast/{city}")
+    public ResponseEntity<?> getForecastPollutionDataForCity(@PathVariable String city) {
+        try {
+            pollutionDataService.fetchForecastDataAndStoreInBigQuery(city);
+
+            return ResponseEntity.accepted().body("Forecast data fetching initiated for " + city);
+        } catch (Exception e) {
+            logger.error("Error fetching forecast AQI data for " + city + ": ", e);
+            return ResponseEntity.internalServerError().body("Failed to fetch forecast AQI data for " + city + ": " + e.getMessage());
+        }
+    }
+
+
 
 }

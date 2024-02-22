@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
+import static com.api.des.controller.PollutionDataController.logger;
+
 @Service
 public class PollutionDataService {
     private final BigQuery bigQuery;
@@ -56,10 +58,22 @@ public class PollutionDataService {
         if (coordinates != null) {
             int aqi = getCurrentAQI(coordinates[0], coordinates[1]);
             long timestamp = System.currentTimeMillis() / 1000;
+
             storeDataInBigQuery(aqi, coordinates[0], coordinates[1], timestamp, city, "currentaqi");
+
+            if (isDataStoredSuccessfully(city, timestamp, "currentaqi")) {
+                logger.info("Data for city {} stored successfully in BigQuery.", city);
+            } else {
+                logger.warn("Failed to store data for city {} in BigQuery.", city);
+            }
         } else {
             // Handle unknown city
         }
+    }
+
+    private boolean isDataStoredSuccessfully(String city, long timestamp, String tableName) {
+        // Query BigQuery to check if data was stored successfully
+        return !isDuplicateEntry("currentapi", tableName, city, timestamp);
     }
 
     public void fetchAllCurrentDataAndStoreInBigQuery() {
@@ -77,14 +91,14 @@ public class PollutionDataService {
                 double pm25 = forecast.getComponents().getPm2_5();
                 int aqi = UtilityMethods.convertPM25ToAQI(pm25);
                 long timestamp = forecast.getDt();
-                if (!isDuplicateEntry(timestamp, city, "forecastaqi")) {
+                if (!isDuplicateEntry("currentapi", "forecastaqi", city, timestamp)) {
                     storeDataInBigQuery(aqi, coordinates[0], coordinates[1], timestamp, city, "forecastaqi");
                 }
+
             });
         });
     }
-    private boolean isDuplicateEntry(long timestamp, String city, String tableName) {
-        String datasetName = "currentapi";
+    private boolean isDuplicateEntry(String datasetName, String tableName, String city, long timestamp) {
         String query = String.format(
                 "SELECT COUNT(*) FROM %s.%s WHERE city = '%s' AND timestamp = '%s'",
                 datasetName, tableName, city, convertUnixTimeToTimestamp(timestamp)
@@ -102,16 +116,17 @@ public class PollutionDataService {
         }
     }
 
-    @Async
+
     public void fetchForecastDataAndStoreInBigQuery(String city) {
         double[] coordinates = CITY_COORDINATES.get(city);
+        System.out.println("test");
         if (coordinates != null) {
             PollutionData forecastData = getForecastData(coordinates[0], coordinates[1]);
             forecastData.getList().forEach(forecast -> {
                 double pm25 = forecast.getComponents().getPm2_5();
                 int aqi = UtilityMethods.convertPM25ToAQI(pm25);
                 long timestamp = forecast.getDt();
-                if (!isDuplicateEntry(timestamp, city, "forecastaqi")) {
+                if (!isDuplicateEntry("currentapi", "forecastaqi", city, timestamp)) { // Check if data is not duplicate
                     storeDataInBigQuery(aqi, coordinates[0], coordinates[1], timestamp, city, "forecastaqi");
                 }
             });
@@ -119,6 +134,7 @@ public class PollutionDataService {
             // Handle unknown city
         }
     }
+
 //    @Scheduled(fixedRate = 3600000) // 3600000 milliseconds = 1 hour
 //    public void fetchDataAndStoreInBigQuery() {
 //        // Assuming you want to fetch current data; adjust as needed
