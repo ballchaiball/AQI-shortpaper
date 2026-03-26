@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Secrets — never commit these ###
+.env
+*-adminsdk-*.json
+*firebase-adminsdk*.json
+*shortpaper-airpollution*.json
+line-storage*.json
