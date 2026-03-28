@@ -36,6 +36,7 @@ build/
 .DS_Store
 
 ### Secrets — never commit these ###
+.env.example
 .env
 *-adminsdk-*.json
 *firebase-adminsdk*.json

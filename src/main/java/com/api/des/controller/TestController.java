@@ -1,21 +1,17 @@
 package com.api.des.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@RequestMapping("/api/v1")
 public class TestController {
 
-    @GetMapping("/")
-    public String test() {
-        return "test";
+    @GetMapping("/health")
+    public String health() {
+        return "Service is up and running";
     }
 
 
-    @GetMapping("/favicon.ico")
-    public void favicon() {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-    }
 }

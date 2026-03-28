@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/pollution")
+@RequestMapping("/api/v1/pollution")
 
 public class PollutionDataController {
 
@@ -51,8 +51,6 @@ public class PollutionDataController {
     @GetMapping("/forecast/all")
     public ResponseEntity<?> getAllForecastPollutionData() {
         try {
-            System.out.println("test");
-
             pollutionDataService.fetchAllForecastDataAndStoreInBigQuery();
             return ResponseEntity.ok("Forecast AQI data for all cities fetched and stored in BigQuery");
         } catch (Exception e) {
